@@ -1,0 +1,73 @@
+#pragma version 11
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 8 1
+    bytecblock 0x151f7c750000000000000001
+    // smart_contracts/compliance_engine/contract.py:5
+    // class ComplianceEngine(ARC4Contract):
+    txn NumAppArgs
+    bz main___algopy_default_create@10
+    txn OnCompletion
+    !
+    assert
+    txn ApplicationID
+    assert
+    pushbytess 0x588ec002 0x96b9d669 0xc8f1c0a2 // method "create_batch(uint64)uint64", method "approve_batch(uint64)uint64", method "get_batch_status(uint64)uint64"
+    txna ApplicationArgs 0
+    match create_batch approve_batch get_batch_status
+    err
+
+main___algopy_default_create@10:
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    return
+
+
+// smart_contracts.compliance_engine.contract.ComplianceEngine.create_batch[routing]() -> void:
+create_batch:
+    // smart_contracts/compliance_engine/contract.py:7
+    // @abimethod()
+    txna ApplicationArgs 1
+    len
+    intc_0 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    pushbytes 0x151f7c750000000000000000
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts.compliance_engine.contract.ComplianceEngine.approve_batch[routing]() -> void:
+approve_batch:
+    // smart_contracts/compliance_engine/contract.py:11
+    // @abimethod()
+    txna ApplicationArgs 1
+    len
+    intc_0 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    bytec_0 // 0x151f7c750000000000000001
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts.compliance_engine.contract.ComplianceEngine.get_batch_status[routing]() -> void:
+get_batch_status:
+    // smart_contracts/compliance_engine/contract.py:15
+    // @abimethod()
+    txna ApplicationArgs 1
+    len
+    intc_0 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    bytec_0 // 0x151f7c750000000000000001
+    log
+    intc_1 // 1
+    return

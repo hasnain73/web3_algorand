@@ -1,0 +1,139 @@
+{
+    "name": "ComplianceEngine",
+    "structs": {},
+    "methods": [
+        {
+            "name": "create_batch",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "batch_id"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "actions": {
+                "create": [],
+                "call": [
+                    "NoOp"
+                ]
+            },
+            "readonly": false,
+            "events": [],
+            "recommendations": {}
+        },
+        {
+            "name": "approve_batch",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "batch_id"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "actions": {
+                "create": [],
+                "call": [
+                    "NoOp"
+                ]
+            },
+            "readonly": false,
+            "events": [],
+            "recommendations": {}
+        },
+        {
+            "name": "get_batch_status",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "batch_id"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "actions": {
+                "create": [],
+                "call": [
+                    "NoOp"
+                ]
+            },
+            "readonly": false,
+            "events": [],
+            "recommendations": {}
+        }
+    ],
+    "arcs": [
+        22,
+        28
+    ],
+    "networks": {},
+    "state": {
+        "schema": {
+            "global": {
+                "ints": 0,
+                "bytes": 0
+            },
+            "local": {
+                "ints": 0,
+                "bytes": 0
+            }
+        },
+        "keys": {
+            "global": {},
+            "local": {},
+            "box": {}
+        },
+        "maps": {
+            "global": {},
+            "local": {},
+            "box": {}
+        }
+    },
+    "bareActions": {
+        "create": [
+            "NoOp"
+        ],
+        "call": []
+    },
+    "sourceInfo": {
+        "approval": {
+            "sourceInfo": [
+                {
+                    "pc": [
+                        75,
+                        99,
+                        110
+                    ],
+                    "errorMessage": "invalid number of bytes for arc4.uint64"
+                }
+            ],
+            "pcOffsetMethod": "none"
+        },
+        "clear": {
+            "sourceInfo": [],
+            "pcOffsetMethod": "none"
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDExCiNwcmFnbWEgdHlwZXRyYWNrIGZhbHNlCgovLyBhbGdvcHkuYXJjNC5BUkM0Q29udHJhY3QuYXBwcm92YWxfcHJvZ3JhbSgpIC0+IHVpbnQ2NDoKbWFpbjoKICAgIGludGNibG9jayA4IDEKICAgIGJ5dGVjYmxvY2sgMHgxNTFmN2M3NTAwMDAwMDAwMDAwMDAwMDEKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9jb21wbGlhbmNlX2VuZ2luZS9jb250cmFjdC5weTo1CiAgICAvLyBjbGFzcyBDb21wbGlhbmNlRW5naW5lKEFSQzRDb250cmFjdCk6CiAgICB0eG4gTnVtQXBwQXJncwogICAgYnogbWFpbl9fX2FsZ29weV9kZWZhdWx0X2NyZWF0ZUAxMAogICAgdHhuIE9uQ29tcGxldGlvbgogICAgIQogICAgYXNzZXJ0CiAgICB0eG4gQXBwbGljYXRpb25JRAogICAgYXNzZXJ0CiAgICBwdXNoYnl0ZXNzIDB4NTg4ZWMwMDIgMHg5NmI5ZDY2OSAweGM4ZjFjMGEyIC8vIG1ldGhvZCAiY3JlYXRlX2JhdGNoKHVpbnQ2NCl1aW50NjQiLCBtZXRob2QgImFwcHJvdmVfYmF0Y2godWludDY0KXVpbnQ2NCIsIG1ldGhvZCAiZ2V0X2JhdGNoX3N0YXR1cyh1aW50NjQpdWludDY0IgogICAgdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAogICAgbWF0Y2ggY3JlYXRlX2JhdGNoIGFwcHJvdmVfYmF0Y2ggZ2V0X2JhdGNoX3N0YXR1cwogICAgZXJyCgptYWluX19fYWxnb3B5X2RlZmF1bHRfY3JlYXRlQDEwOgogICAgdHhuIE9uQ29tcGxldGlvbgogICAgIQogICAgdHhuIEFwcGxpY2F0aW9uSUQKICAgICEKICAgICYmCiAgICByZXR1cm4KCgovLyBzbWFydF9jb250cmFjdHMuY29tcGxpYW5jZV9lbmdpbmUuY29udHJhY3QuQ29tcGxpYW5jZUVuZ2luZS5jcmVhdGVfYmF0Y2hbcm91dGluZ10oKSAtPiB2b2lkOgpjcmVhdGVfYmF0Y2g6CiAgICAvLyBzbWFydF9jb250cmFjdHMvY29tcGxpYW5jZV9lbmdpbmUvY29udHJhY3QucHk6NwogICAgLy8gQGFiaW1ldGhvZCgpCiAgICB0eG5hIEFwcGxpY2F0aW9uQXJncyAxCiAgICBsZW4KICAgIGludGNfMCAvLyA4CiAgICA9PQogICAgYXNzZXJ0IC8vIGludmFsaWQgbnVtYmVyIG9mIGJ5dGVzIGZvciBhcmM0LnVpbnQ2NAogICAgcHVzaGJ5dGVzIDB4MTUxZjdjNzUwMDAwMDAwMDAwMDAwMDAwCiAgICBsb2cKICAgIGludGNfMSAvLyAxCiAgICByZXR1cm4KCgovLyBzbWFydF9jb250cmFjdHMuY29tcGxpYW5jZV9lbmdpbmUuY29udHJhY3QuQ29tcGxpYW5jZUVuZ2luZS5hcHByb3ZlX2JhdGNoW3JvdXRpbmddKCkgLT4gdm9pZDoKYXBwcm92ZV9iYXRjaDoKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9jb21wbGlhbmNlX2VuZ2luZS9jb250cmFjdC5weToxMQogICAgLy8gQGFiaW1ldGhvZCgpCiAgICB0eG5hIEFwcGxpY2F0aW9uQXJncyAxCiAgICBsZW4KICAgIGludGNfMCAvLyA4CiAgICA9PQogICAgYXNzZXJ0IC8vIGludmFsaWQgbnVtYmVyIG9mIGJ5dGVzIGZvciBhcmM0LnVpbnQ2NAogICAgYnl0ZWNfMCAvLyAweDE1MWY3Yzc1MDAwMDAwMDAwMDAwMDAwMQogICAgbG9nCiAgICBpbnRjXzEgLy8gMQogICAgcmV0dXJuCgoKLy8gc21hcnRfY29udHJhY3RzLmNvbXBsaWFuY2VfZW5naW5lLmNvbnRyYWN0LkNvbXBsaWFuY2VFbmdpbmUuZ2V0X2JhdGNoX3N0YXR1c1tyb3V0aW5nXSgpIC0+IHZvaWQ6CmdldF9iYXRjaF9zdGF0dXM6CiAgICAvLyBzbWFydF9jb250cmFjdHMvY29tcGxpYW5jZV9lbmdpbmUvY29udHJhY3QucHk6MTUKICAgIC8vIEBhYmltZXRob2QoKQogICAgdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQogICAgbGVuCiAgICBpbnRjXzAgLy8gOAogICAgPT0KICAgIGFzc2VydCAvLyBpbnZhbGlkIG51bWJlciBvZiBieXRlcyBmb3IgYXJjNC51aW50NjQKICAgIGJ5dGVjXzAgLy8gMHgxNTFmN2M3NTAwMDAwMDAwMDAwMDAwMDEKICAgIGxvZwogICAgaW50Y18xIC8vIDEKICAgIHJldHVybgo=",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDExCiNwcmFnbWEgdHlwZXRyYWNrIGZhbHNlCgovLyBhbGdvcHkuYXJjNC5BUkM0Q29udHJhY3QuY2xlYXJfc3RhdGVfcHJvZ3JhbSgpIC0+IHVpbnQ2NDoKbWFpbjoKICAgIHB1c2hpbnQgMQogICAgcmV0dXJuCg=="
+    },
+    "byteCode": {
+        "approval": "CyACCAEmAQwVH3x1AAAAAAAAAAExG0EAJDEZFEQxGESCAwRYjsACBJa51mkEyPHAojYaAI4DAAkAIQAsADEZFDEYFBBDNhoBFSISRIAMFR98dQAAAAAAAAAAsCNDNhoBFSISRCiwI0M2GgEVIhJEKLAjQw==",
+        "clear": "C4EBQw=="
+    },
+    "compilerInfo": {
+        "compiler": "puya",
+        "compilerVersion": {
+            "major": 5,
+            "minor": 7,
+            "patch": 1
+        }
+    },
+    "events": [],
+    "templateVariables": {}
+}
