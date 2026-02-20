@@ -1,0 +1,17 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install flask algokit-utils
+
+EXPOSE 7860
+
+ENV APP_ID=755786578
+ENV SENDER_ADDRESS=3NRLM4LOCYRRXZHB5RXF6DVXF36ZMTPDUMQ3WCCBWCKFPZY54CIGEZTM7Y
+ENV ALGOD_SERVER=https://testnet-api.algonode.cloud
+ENV ALGOD_PORT=443
+ENV PORT=7860
+
+CMD ["python", "frontend/app.py"]
