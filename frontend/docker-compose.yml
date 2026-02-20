@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  # ── Flask Frontend ──────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      # Algorand node connection (point at AlgoNode or local sandbox)
+      - ALGOD_SERVER=${ALGOD_SERVER:-https://testnet-api.algonode.cloud}
+      - ALGOD_PORT=${ALGOD_PORT:-443}
+      - ALGOD_TOKEN=${ALGOD_TOKEN:-}
+      - INDEXER_SERVER=${INDEXER_SERVER:-https://testnet-idx.algonode.cloud}
+      - INDEXER_PORT=${INDEXER_PORT:-443}
+      - INDEXER_TOKEN=${INDEXER_TOKEN:-}
+      # Deployed app details
+      - APP_ID=${APP_ID:-0}
+      - SENDER_ADDRESS=${SENDER_ADDRESS:-}
+      - DEPLOYER_MNEMONIC=${DEPLOYER_MNEMONIC:-}
+      # Flask
+      - FLASK_DEBUG=${FLASK_DEBUG:-0}
+      - PORT=5000
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5000/" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ── Smart Contract Build Environment (optional, for local compile) ──────────
+  contract:
+    image: python:3.12-slim
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      - ALGOD_SERVER=${ALGOD_SERVER:-https://testnet-api.algonode.cloud}
+      - ALGOD_PORT=${ALGOD_PORT:-443}
+      - ALGOD_TOKEN=${ALGOD_TOKEN:-}
+      - DEPLOYER_MNEMONIC=${DEPLOYER_MNEMONIC:-}
+    command: >
+      bash -c "
+        pip install algokit-utils algosdk puya &&
+        echo 'Contract environment ready. Run: python -m algokit deploy'
+      "
+    profiles:
+      - contract # Only starts when explicitly requested: docker compose --profile contract up

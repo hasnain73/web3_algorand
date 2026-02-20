@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Vendor Registry · ComplianceEngine{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-tag">// Feature 4 · Supply Chain Registry</div>
+    <h1 class="page-title">Vendor <span>Registry</span></h1>
+    <p class="page-sub">On-chain batch history for vendor address</p>
+</div>
+
+{% if error %}
+<div class="alert alert-error">⚠ {{ error }}</div>
+{% endif %}
+
+<div class="card" style="margin-bottom:1.5rem;">
+    <div class="result-block" style="margin-bottom:0;">
+        <div class="result-row"><span class="result-key">address</span><span class="result-val">{{ address }}</span>
+        </div>
+        <div class="result-row">
+            <span class="result-key">role</span>
+            <span class="result-val">
+                {% if role == 'ADMIN' %}
+                <span class="badge badge-certified">ADMIN</span>
+                {% elif role == 'VENDOR' %}
+                <span class="badge badge-created">VENDOR</span>
+                {% elif role == 'INSPECTOR' %}
+                <span class="badge badge-approved">INSPECTOR</span>
+                {% else %}
+                <span class="badge badge-none">{{ role }}</span>
+                {% endif %}
+            </span>
+        </div>
+        <div class="result-row"><span class="result-key">batches</span><span class="result-val">{{ batches | length
+                }}</span></div>
+    </div>
+</div>
+
+{% if batches %}
+<div class="card">
+    <h2
+        style="font-size:.8rem; color:var(--text-muted); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.12em; margin-bottom:1rem;">
+        Batch History
+    </h2>
+    <ul class="batch-list">
+        {% for b in batches %}
+        <li class="batch-item">
+            <span class="batch-num">{{ loop.index }}</span>
+            <span>{{ b }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+<div class="card" style="text-align:center; padding:3rem; color:var(--text-muted);">
+    <div style="font-size:2rem; margin-bottom:.75rem;">◎</div>
+    <div style="font-family:var(--font-mono); font-size:.85rem;">No batches found for this vendor</div>
+</div>
+{% endif %}
+
+<hr class="divider" />
+
+<form style="display:flex; gap:1rem; align-items:flex-end;">
+    <div class="form-group" style="flex:1; margin:0;">
+        <label for="addr">Look up another vendor</label>
+        <input type="text" id="addr" placeholder="Algorand address..." />
+    </div>
+    <button type="button" class="btn btn-outline"
+        onclick="window.location='/vendor/'+document.getElementById('addr').value">
+        Look up
+    </button>
+</form>
+{% endblock %}

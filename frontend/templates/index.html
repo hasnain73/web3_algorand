@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · ComplianceEngine{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-tag">// On-Chain Compliance</div>
+    <h1 class="page-title">Compliance<span>Engine</span></h1>
+    <p class="page-sub">Algorand ARC4 Smart Contract · Batch Lifecycle · NFT Certification</p>
+</div>
+
+<div class="card-grid">
+    <div class="stat-card">
+        <div class="stat-label">App ID</div>
+        <div class="stat-value accent">{{ app_id or '—' }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Network</div>
+        <div class="stat-value">Testnet</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">States</div>
+        <div class="stat-value">3</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">NFT Support</div>
+        <div class="stat-value accent">ASA</div>
+    </div>
+</div>
+
+<div class="card">
+    <h2
+        style="font-size:1rem; color:var(--text-muted); font-weight:600; margin-bottom:1.25rem; text-transform:uppercase; letter-spacing:.1em; font-family:var(--font-mono);">
+        Batch Lifecycle
+    </h2>
+    <div style="display:flex; gap:0; align-items:center; flex-wrap:wrap;">
+        <span class="badge badge-created" style="padding:.4rem 1rem;">0 · CREATED</span>
+        <span style="color:var(--text-muted); padding:0 .75rem;">→</span>
+        <span class="badge badge-approved" style="padding:.4rem 1rem;">1 · APPROVED</span>
+        <span style="color:var(--text-muted); padding:0 .75rem;">→</span>
+        <span class="badge badge-certified" style="padding:.4rem 1rem;">2 · CERTIFIED + NFT</span>
+    </div>
+</div>
+
+<div class="action-grid">
+    <a href="/create" class="action-card">
+        <div class="action-icon">⊕</div>
+        <div class="action-title">Create Batch</div>
+        <div class="action-desc">VENDOR role required</div>
+    </a>
+    <a href="/approve" class="action-card">
+        <div class="action-icon">✓</div>
+        <div class="action-title">Approve Batch</div>
+        <div class="action-desc">INSPECTOR role required</div>
+    </a>
+    <a href="/certify" class="action-card">
+        <div class="action-icon">◈</div>
+        <div class="action-title">Certify + Mint NFT</div>
+        <div class="action-desc">Admin or INSPECTOR</div>
+    </a>
+    <a href="/vendor/YOUR_ADDRESS" class="action-card">
+        <div class="action-icon">◎</div>
+        <div class="action-title">Vendor Registry</div>
+        <div class="action-desc">View vendor batches</div>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Create Batch · ComplianceEngine{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-tag">// Feature 1 · Batch Lifecycle</div>
+    <h1 class="page-title">Create <span>Batch</span></h1>
+    <p class="page-sub">Requires VENDOR role · Sets state to CREATED (0)</p>
+</div>
+
+{% if error %}
+<div class="alert alert-error">⚠ {{ error }}</div>
+{% endif %}
+
+{% if result %}
+<div class="alert alert-success">✓ Batch created successfully on-chain</div>
+<div class="result-block" style="margin-bottom:1.5rem;">
+    <div class="result-row"><span class="result-key">batch_id</span><span class="result-val">{{ result.batch_id
+            }}</span></div>
+    <div class="result-row"><span class="result-key">status</span><span class="result-val"><span
+                class="badge badge-created">{{ result.status }}</span></span></div>
+    <div class="result-row"><span class="result-key">tx_id</span><span class="result-val">{{ result.tx_id }}</span>
+    </div>
+</div>
+{% endif %}
+
+<div class="card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="batch_id">Batch ID</label>
+            <input type="text" id="batch_id" name="batch_id" placeholder="e.g. BATCH-2024-001" required />
+        </div>
+        <button type="submit" class="btn btn-primary">⊕ Create Batch</button>
+    </form>
+</div>
+{% endblock %}
